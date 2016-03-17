@@ -8,4 +8,5 @@ import com.common.EasyApp;
  */
 public class App extends EasyApp {
 
+
 }
