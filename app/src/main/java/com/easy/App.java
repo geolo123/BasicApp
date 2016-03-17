@@ -7,4 +7,5 @@ import com.common.EasyApp;
  * email  meikoz@126.com
  */
 public class App extends EasyApp {
+
 }
