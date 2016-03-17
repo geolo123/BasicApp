@@ -8,5 +8,8 @@ import com.common.EasyApp;
  */
 public class App extends EasyApp {
 
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 }

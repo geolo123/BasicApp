@@ -31,6 +31,7 @@ dependencies {
     compile 'com.github.orhanobut:logger:1.12'
     compile 'com.squareup.okhttp3:okhttp:3.0.1'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.github.orhanobut:hawk:1.21'
 
     //retrofit
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
