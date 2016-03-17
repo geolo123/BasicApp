@@ -7,7 +7,6 @@ import com.common.EasyApp;
 import com.common.db.DBManager;
 import com.common.utils.NetworkUtils;
 import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,7 +76,7 @@ public class RequestManager {
                 //获取String类型响应，注意是string(),不是toString()
                 final String json = response.body().string();
                 //在控制台格式化打印json数据
-                Logger.json(json);
+//                Logger.json(json);
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -157,14 +156,14 @@ public class RequestManager {
             Request request = chain.request();
 
             long t1 = System.nanoTime();
-            Logger.i(String.format("Sending request %s on %s%n%s",
-                    request.url(), chain.connection(), request.headers()));
+//            Logger.i(String.format("Sending request %s on %s%n%s",
+//                    request.url(), chain.connection(), request.headers()));
 
             Response response = chain.proceed(request);
 
             long t2 = System.nanoTime();
-            Logger.i(String.format("Received response for %s in %.1fms%n%s",
-                    response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+//            Logger.i(String.format("Received response for %s in %.1fms%n%s",
+//                    response.request().url(), (t2 - t1) / 1e6d, response.headers()));
 
             return response;
         }

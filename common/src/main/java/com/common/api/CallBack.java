@@ -2,6 +2,7 @@ package com.common.api;
 
 import android.widget.Toast;
 
+import com.common.EasyApp;
 import com.google.gson.internal.$Gson$Types;
 
 import java.lang.reflect.ParameterizedType;
@@ -30,6 +31,6 @@ public abstract class CallBack<T> {
     public abstract void onSuccess(T result);
 
     public void onFailure(String message) {
-        Toast.makeText(App.getInstance(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(EasyApp.getInstance(), message, Toast.LENGTH_SHORT).show();
     }
 }

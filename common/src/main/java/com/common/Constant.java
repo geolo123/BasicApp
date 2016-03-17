@@ -6,4 +6,5 @@ package com.common;
  */
 public class Constant {
     public static final String GANK_DATA_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+    public static final String BASE_URL = "http://gank.avosapps.com/api/";
 }
