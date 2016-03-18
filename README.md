@@ -3,56 +3,69 @@
 - Android 基础框架,用于优化开发体验,减少代码量
 
 ## Usage
->   EasyApp中common拷入到自己项目的根目录中
-    File --> New --> Import Module 选择自己项目的common目录
+- EasyApp中common拷入到自己项目的根目录中
+- File --> New --> Import Module 选择自己项目的common目录
     
-#### EasyApp
+##### EasyApp
 >   EasyApp继承Application 初始化一些第三方库
 
+##### ReplaceActivity
+>   用于Fragment替换Activity使用 只要继承ReplaceActivity replaceFragment(new 使用Fragment())
+
 ```
-public class EasyApp extends Application{
-    public Gson gson;
-    private static EasyApp ourInstance = new EasyApp();
-    public static EasyApp getInstance() {
-        return ourInstance;
-    }
-
+public class MainActivity extends ReplaceActivity {
     @Override
-    public void onCreate() {
-        super.onCreate();
-        ourInstance = this;
-        this.initGson();
-
-        LogLevel logLevel;
-        if (Config.DEBUG)logLevel =LogLevel.FULL;
-        else logLevel=LogLevel.NONE;
-
-        Logger.init().methodOffset(2).methodCount(2).logLevel(logLevel);
-
-        //Secure, simple key-value storage for android
-        Hawk.init(this)
-                .setEncryptionMethod(HawkBuilder.EncryptionMethod.MEDIUM)
-                .setStorage(HawkBuilder.newSqliteStorage(this))
-                .build();
-    }
-
-    private void initGson() {
-        this.gson = new GsonBuilder()
-                .setDateFormat(Constant.GANK_DATA_FORMAT)
-                .create();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initTitleBar("replaceFragment");
+        replaceFragment(new HomeFragment());
     }
 }
 ```
 
+##### ListViewFragment
+>   只要继承ListViewFragment 不用没页面单独写布局
 
+```
+public class HomeFragment extends ListViewFragment {
+    private List<Repo.ResultsEntity> billList =new ArrayList<>();
+    private HomeAdapter adapter;
 
-*设置斜体*
-**设置加粗**
-*+- 无序列表
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        adapter = new HomeAdapter(getActivity(), billList, R.layout.item_home_list);
+        getListView().setAdapter(adapter);
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Repo.ResultsEntity item = adapter.getItem(position);
+                WebViewActivity.start(getActivity(),item.getUrl(),item.getWho());
+            }
+        });
+        onRecvData();
+    }
 
+    private void onRecvData() {
+        RestApi.createService(UserService.class).getData("Android",10,1).enqueue(new GsonCallback<Repo>() {
+            @Override
+            protected void onSuccess(Response<Repo> response) {
+                Repo body = response.body();
+                if (!body.isError()){
+                    List<Repo.ResultsEntity> results = body.getResults();
+                    billList.addAll(results);
+                    adapter.notifyDataSetChanged();
+                }
 
-`<heelo>`
+            }
 
-hello[^hello]
+            @Override
+            protected void onFail(Throwable t) {
+
+            }
+        });
+    }
+}
+```
 
 ---
