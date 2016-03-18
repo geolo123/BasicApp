@@ -38,6 +38,5 @@ public class RestApi {
                 .client(okHttpClient)
                 .build();
         return retrofit.create(clz);
-
     }
 }
