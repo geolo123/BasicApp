@@ -18,7 +18,7 @@ import com.common.widget.EndlessScrollListener;
  * author miekoz on 2016/3/16.
  * email  meikoz@126.com
  */
-public class ListViewFragment extends EasyBaseFragment {
+public class ListViewFragment extends BaseFragment {
 
     private ListView listView;
     private View header, footer;

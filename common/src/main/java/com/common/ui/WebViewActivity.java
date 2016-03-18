@@ -19,7 +19,7 @@ import com.common.utils.WebViewUtil;
  * author miekoz on 2016/3/15.
  * email  meikoz@126.com
  */
-public class EasyWebViewActivity extends EasyBaseActivity {
+public class WebViewActivity extends BaseActivity {
 
     private static final int PROGRESS_RATIO = 1000;
     ProgressBar webviewPb;
@@ -28,7 +28,7 @@ public class EasyWebViewActivity extends EasyBaseActivity {
 
     public static void start(Context context, String url, String title, boolean isShow) {
         if (TextUtils.isEmpty(url)) throw new IllegalArgumentException("url must not be empty");
-        Intent intent = new Intent(context, EasyWebViewActivity.class);
+        Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra("url", url);
         intent.putExtra("title", title);
         context.startActivity(intent);
@@ -106,22 +106,22 @@ public class EasyWebViewActivity extends EasyBaseActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 if (url.contains("www.vmovier.com")) {
-                    WebViewUtil.injectCss(EasyWebViewActivity.this, EasyWebViewActivity.this.webview, "vmovier.css");
+                    WebViewUtil.injectCss(WebViewActivity.this, WebViewActivity.this.webview, "vmovier.css");
                 } else if (url.contains("video.weibo.com")) {
-                    WebViewUtil.injectCss(EasyWebViewActivity.this, EasyWebViewActivity.this.webview, "weibo.css");
+                    WebViewUtil.injectCss(WebViewActivity.this, WebViewActivity.this.webview, "weibo.css");
                 } else if (url.contains("m.miaopai.com")) {
-                    WebViewUtil.injectCss(EasyWebViewActivity.this, EasyWebViewActivity.this.webview, "miaopai.css");
+                    WebViewUtil.injectCss(WebViewActivity.this, WebViewActivity.this.webview, "miaopai.css");
                 }
             }
         });
         this.webview.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
-                EasyWebViewActivity.this.webviewPb.setProgress(progress);
+                WebViewActivity.this.webviewPb.setProgress(progress);
                 setProgress(progress * PROGRESS_RATIO);
                 if (progress >= 80) {
-                    EasyWebViewActivity.this.webviewPb.setVisibility(View.GONE);
+                    WebViewActivity.this.webviewPb.setVisibility(View.GONE);
                 } else {
-                    EasyWebViewActivity.this.webviewPb.setVisibility(View.VISIBLE);
+                    WebViewActivity.this.webviewPb.setVisibility(View.VISIBLE);
                 }
             }
         });

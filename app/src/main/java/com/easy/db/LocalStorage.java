@@ -1,5 +1,6 @@
-package com.easy;
+package com.easy.db;
 
+import com.easy.Repo;
 import com.orhanobut.hawk.Hawk;
 
 /**

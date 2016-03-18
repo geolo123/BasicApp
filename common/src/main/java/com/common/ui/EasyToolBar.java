@@ -45,7 +45,7 @@ public class EasyToolBar extends RelativeLayout implements View.OnClickListener 
     }
 
     private void onInit() {
-       View rootView = inflate(getContext(), R.layout.layout_title, this);
+       View rootView = inflate(getContext(), R.layout.layout_nav_toolbar, this);
         mlvTitleRight = (LinearLayout) rootView.findViewById(R.id.lv_title_right);
         mTvTitle = (TextView) rootView.findViewById(R.id.tv_title);
         int padding = ScreenUtils.dp2px(getContext(), 15);

@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
  * author miekoz on 2016/3/16.
  * email  meikoz@126.com
  */
-public abstract class EasyBaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     protected View rootView;
     @Nullable
@@ -38,7 +38,7 @@ public abstract class EasyBaseFragment extends Fragment {
     protected abstract void onInitData();
 
     public String getName() {
-        return EasyBaseFragment.class.getName();
+        return BaseFragment.class.getName();
     }
 
     @Override

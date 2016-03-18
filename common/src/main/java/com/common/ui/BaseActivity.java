@@ -15,13 +15,14 @@ import butterknife.ButterKnife;
  * author miekoz on 2016/3/15.
  * email  meikoz@126.com
  */
-public abstract class EasyBaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected EasyToolBar mTitleBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(getLayoutResource());
         ButterKnife.bind(this);
         this.onInitData();
