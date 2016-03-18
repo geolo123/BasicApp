@@ -1,5 +1,7 @@
-package com.easy;
+package com.easy.db;
 
+
+import com.easy.bo.Repo;
 
 import retrofit.Call;
 import retrofit.http.GET;

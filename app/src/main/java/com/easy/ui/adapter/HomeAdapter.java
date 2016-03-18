@@ -5,7 +5,7 @@ import android.content.Context;
 import com.common.comm.CommonAdapter;
 import com.common.comm.ViewHolder;
 import com.easy.R;
-import com.easy.Repo;
+import com.easy.bo.Repo;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.easy;
+package com.easy.bo;
 
 import java.util.List;
 

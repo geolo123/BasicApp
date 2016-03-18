@@ -4,16 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.common.api.GsonCallback;
 import com.common.api.RestApi;
-import com.common.ui.BaseFragment;
 import com.common.ui.ListViewFragment;
 import com.common.ui.WebViewActivity;
 import com.easy.R;
-import com.easy.Repo;
-import com.easy.UserService;
+import com.easy.bo.Repo;
+import com.easy.db.UserService;
 import com.easy.ui.adapter.HomeAdapter;
 
 import java.util.ArrayList;
