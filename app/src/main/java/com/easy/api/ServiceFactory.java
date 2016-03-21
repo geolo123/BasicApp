@@ -11,16 +11,11 @@ import retrofit.Call;
  */
 public class ServiceFactory {
 
-    /**每次加载条目*/
-    public static final int LOAD_LIMIT = 20;
-    /**加载起始页面*/
-    public static final int LOAD_START = 1;
-
     private static MainService mService;
 
-    public static MainService getIns(){
+    public static MainService getMainIns(){
         if (mService == null){
-            mService = RestApi.createService(MainService.class);
+            mService = RestApi.getIns().createService(MainService.class);
         }
         return mService;
     }

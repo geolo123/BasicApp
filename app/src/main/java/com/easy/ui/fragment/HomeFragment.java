@@ -1,4 +1,4 @@
-package com.easy.ui;
+package com.easy.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,8 +48,8 @@ public class HomeFragment extends ListViewFragment {
     }
 
     private void onRecvData() {
-        ServiceFactory.getIns()
-                .getBenefitsGoods(ServiceFactory.LOAD_LIMIT, 1)
+        ServiceFactory.getMainIns()
+                .getBenefitsGoods(20, 1)
                 .enqueue(new Callback<GoodsRepo>() {
                     @Override
                     public void onResponse(Response<GoodsRepo> response, Retrofit retrofit) {

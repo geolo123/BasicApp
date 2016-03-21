@@ -17,26 +17,36 @@ import retrofit.RxJavaCallAdapterFactory;
  */
 public class RestApi {
 
-    public RestApi(){
+    private static RestApi mInstance;
+    private Retrofit retrofit;
+
+    public static RestApi getIns(){
+        if (mInstance == null){
+            synchronized (RestApi.class){
+                if (mInstance == null) mInstance = new RestApi();
+            }
+        }
+        return mInstance;
     }
 
-    public static <T> T createService(Class<T> clz){
+    public RestApi(){
 
-        //okhttp
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setReadTimeout(7676, TimeUnit.MILLISECONDS);
 
-        //log
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         okHttpClient.interceptors().add(interceptor);
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.BASE_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(EasyApp.getInstance().gson))
                 .client(okHttpClient)
                 .build();
+    }
+
+    public  <T> T createService(Class<T> clz){
         return retrofit.create(clz);
     }
 }

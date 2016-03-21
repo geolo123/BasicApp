@@ -1,8 +1,9 @@
-package com.easy.ui;
+package com.easy.ui.activity;
 
 import android.os.Bundle;
 
 import com.common.ui.ReplaceActivity;
+import com.easy.ui.fragment.HomeFragment;
 
 
 public class MainActivity extends ReplaceActivity {
