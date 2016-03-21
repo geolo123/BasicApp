@@ -27,6 +27,7 @@ import retrofit.Retrofit;
  */
 public class HomeFragment extends ListViewFragment {
 
+
     private List<Goods> billList =new ArrayList<>();
 
     private HomeAdapter adapter;
@@ -56,12 +57,12 @@ public class HomeFragment extends ListViewFragment {
                           List<Goods> result = response.body().getResults();
                           billList.addAll(result);
                           adapter.notifyDataSetChanged();
+                          dismissProgress();
                       }
                     }
 
                     @Override
                     public void onFailure(Throwable t) {
-
                     }
                 });
     }
