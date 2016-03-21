@@ -5,19 +5,21 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.common.api.GsonCallback;
-import com.common.api.RestApi;
 import com.common.ui.ListViewFragment;
 import com.common.ui.WebViewActivity;
 import com.easy.R;
-import com.easy.bo.Repo;
-import com.easy.db.UserService;
+import com.easy.api.MainService;
+import com.easy.api.ServiceFactory;
+import com.easy.pojo.Goods;
+import com.easy.pojo.GoodsRepo;
 import com.easy.ui.adapter.HomeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit.Callback;
 import retrofit.Response;
+import retrofit.Retrofit;
 
 /**
  * author miekoz on 2016/3/18.
@@ -25,7 +27,8 @@ import retrofit.Response;
  */
 public class HomeFragment extends ListViewFragment {
 
-    private List<Repo.ResultsEntity> billList =new ArrayList<>();
+    private List<Goods> billList =new ArrayList<>();
+
     private HomeAdapter adapter;
 
     @Override
@@ -36,31 +39,31 @@ public class HomeFragment extends ListViewFragment {
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Repo.ResultsEntity item = adapter.getItem(position);
-                WebViewActivity.start(getActivity(),item.getUrl(),item.getWho());
+                Goods item = adapter.getItem(position);
+                WebViewActivity.start(getActivity(),item.url,item.who);
             }
         });
         onRecvData();
     }
 
     private void onRecvData() {
-        RestApi.createService(UserService.class).getData("Android",10,1).enqueue(new GsonCallback<Repo>() {
-            @Override
-            protected void onSuccess(Response<Repo> response) {
-                Repo body = response.body();
-                if (!body.isError()){
-                    List<Repo.ResultsEntity> results = body.getResults();
-                    billList.addAll(results);
-                    adapter.notifyDataSetChanged();
-                }
+        ServiceFactory.getIns()
+                .getBenefitsGoods(ServiceFactory.LOAD_LIMIT, 1)
+                .enqueue(new Callback<GoodsRepo>() {
+                    @Override
+                    public void onResponse(Response<GoodsRepo> response, Retrofit retrofit) {
+                      if (!response.body().error){
+                          List<Goods> result = response.body().getResults();
+                          billList.addAll(result);
+                          adapter.notifyDataSetChanged();
+                      }
+                    }
 
-            }
+                    @Override
+                    public void onFailure(Throwable t) {
 
-            @Override
-            protected void onFail(Throwable t) {
-
-            }
-        });
+                    }
+                });
     }
 
 }

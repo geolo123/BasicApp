@@ -16,8 +16,8 @@ import retrofit.RxJavaCallAdapterFactory;
  * email  meikoz@126.com
  */
 public class RestApi {
-    public RestApi(){
 
+    public RestApi(){
     }
 
     public static <T> T createService(Class<T> clz){
