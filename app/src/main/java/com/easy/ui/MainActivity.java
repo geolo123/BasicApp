@@ -9,7 +9,7 @@ public class MainActivity extends ReplaceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initTitleBar("replaceFragment");
+        initTitleBar("标题");
         replaceFragment(new HomeFragment());
     }
 }

@@ -24,7 +24,7 @@ import okhttp3.Response;
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public class RequestManager {
+public class OkHttpApi {
 
     private static final String ERROR = "error";
     private static final String RESULTS = "results";

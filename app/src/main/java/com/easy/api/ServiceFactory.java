@@ -1,11 +1,9 @@
 package com.easy.api;
 
 import com.common.api.RestApi;
-import com.easy.api.MainService;
 import com.easy.pojo.GoodsRepo;
 
 import retrofit.Call;
-import rx.Observable;
 
 /**
  * author miekoz on 2016/3/21.

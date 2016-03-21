@@ -1,4 +1,4 @@
-package com.easy.db;
+package com.easy.api;
 
 import com.easy.pojo.Goods;
 import com.orhanobut.hawk.Hawk;
