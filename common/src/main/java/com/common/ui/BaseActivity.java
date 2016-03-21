@@ -3,6 +3,7 @@ package com.common.ui;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,7 +16,7 @@ import butterknife.ButterKnife;
  * author miekoz on 2016/3/15.
  * email  meikoz@126.com
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends FragmentActivity {
 
     protected EasyToolBar mTitleBar;
 
