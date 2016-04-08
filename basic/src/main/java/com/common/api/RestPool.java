@@ -2,41 +2,42 @@ package com.common.api;
 
 import com.common.Constant;
 import com.common.EasyApp;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor;
-
 import java.util.concurrent.TimeUnit;
 
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public class HttpClientApi {
+public class RestPool {
 
-    private static HttpClientApi mInstance;
+    private static RestPool mInstance;
     private Retrofit retrofit;
 
-    public static HttpClientApi getIns(){
+    public static RestPool getIns(){
         if (mInstance == null){
-            synchronized (HttpClientApi.class){
-                if (mInstance == null) mInstance = new HttpClientApi();
+            synchronized (RestPool.class){
+                if (mInstance == null) mInstance = new RestPool();
             }
         }
         return mInstance;
     }
 
-    public HttpClientApi(){
-
-        OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.setReadTimeout(7676, TimeUnit.MILLISECONDS);
+    public RestPool(){
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        okHttpClient.interceptors().add(interceptor);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(7676, TimeUnit.MILLISECONDS)
+                .connectTimeout(7676, TimeUnit.MILLISECONDS)
+                .addInterceptor(interceptor)
+                .build();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.BASE_URL)

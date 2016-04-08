@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import butterknife.ButterKnife;
 
 /**
- * author miekoz on 2016/3/16.
+ * author meikoz on 2016/3/30.
  * email  meikoz@126.com
  */
 public abstract class BaseFragment extends Fragment {
@@ -22,7 +21,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView ==null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
-            ButterKnife.bind(this, rootView);
+        ButterKnife.bind(this, rootView);
 
         ViewGroup parentView = (ViewGroup) rootView.getParent();
         if (parentView !=null) parentView.removeView(rootView);

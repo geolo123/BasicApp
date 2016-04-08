@@ -1,6 +1,6 @@
 package com.easy.persenter.core;
 
-import com.easy.api.MainService;
+import com.easy.api.ApiService;
 import com.easy.api.ServiceFactory;
 
 /**
@@ -10,7 +10,7 @@ import com.easy.api.ServiceFactory;
 public class BasePresenter<T extends MvpView> implements Presenter<T>{
 
     private T mMvpView;
-    public MainService mMainService;
+    public ApiService mMainService;
 
     @Override
     public void attachView(T mvpView) {

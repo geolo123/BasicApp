@@ -1,9 +1,10 @@
 package com.easy.api;
 
-import com.common.api.HttpClientApi;
+import com.common.api.RestPool;
 import com.easy.pojo.Gank;
 
-import retrofit.Call;
+import retrofit2.Call;
+
 
 /**
  * author miekoz on 2016/3/21.
@@ -11,11 +12,11 @@ import retrofit.Call;
  */
 public class ServiceFactory {
 
-    private static MainService mService;
+    private static ApiService mService;
 
-    public static MainService getMainIns(){
+    public static ApiService getMainIns(){
         if (mService == null){
-            mService = HttpClientApi.getIns().createService(MainService.class);
+            mService = RestPool.getIns().createService(ApiService.class);
         }
         return mService;
     }
