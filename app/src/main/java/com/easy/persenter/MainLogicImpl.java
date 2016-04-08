@@ -1,7 +1,7 @@
 package com.easy.persenter;
 
 import com.easy.persenter.core.BasePresenter;
-import com.easy.pojo.Gank;
+import com.easy.model.Gank;
 
 import retrofit2.Call;
 import retrofit2.Callback;

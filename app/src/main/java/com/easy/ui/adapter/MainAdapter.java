@@ -5,7 +5,7 @@ import android.content.Context;
 import com.common.comm.CommonAdapter;
 import com.common.comm.ViewHolder;
 import com.easy.R;
-import com.easy.pojo.GankDetails;
+import com.easy.model.GankDetails;
 
 import java.util.List;
 

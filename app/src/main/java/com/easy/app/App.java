@@ -1,4 +1,4 @@
-package com.easy.api;
+package com.easy.app;
 
 import com.common.EasyApp;
 

@@ -1,7 +1,7 @@
 package com.easy.persenter;
 
 import com.easy.persenter.core.MvpView;
-import com.easy.pojo.GankDetails;
+import com.easy.model.GankDetails;
 
 import java.util.List;
 

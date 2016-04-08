@@ -1,7 +1,7 @@
 package com.easy.persenter.core;
 
-import com.easy.api.ApiService;
-import com.easy.api.ServiceFactory;
+import com.easy.net.ApiService;
+import com.easy.net.ServiceFactory;
 
 /**
  * author meikoz on 2016/3/25.

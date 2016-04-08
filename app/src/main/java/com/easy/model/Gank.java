@@ -1,4 +1,4 @@
-package com.easy.pojo;
+package com.easy.model;
 
 import java.util.List;
 

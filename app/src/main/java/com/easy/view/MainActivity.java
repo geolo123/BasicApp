@@ -1,20 +1,18 @@
 package com.easy.view;
 
-import android.os.Bundle;
 import android.widget.ListView;
 
 import com.common.ui.BaseActivity;
 import com.easy.R;
 import com.easy.persenter.MainLogic;
 import com.easy.persenter.MainLogicImpl;
-import com.easy.pojo.GankDetails;
+import com.easy.model.GankDetails;
 import com.easy.ui.adapter.MainAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * author meikoz on 2016/3/25.

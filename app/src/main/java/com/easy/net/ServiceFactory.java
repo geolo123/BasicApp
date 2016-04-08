@@ -1,7 +1,7 @@
-package com.easy.api;
+package com.easy.net;
 
 import com.common.api.RestPool;
-import com.easy.pojo.Gank;
+import com.easy.model.Gank;
 
 import retrofit2.Call;
 

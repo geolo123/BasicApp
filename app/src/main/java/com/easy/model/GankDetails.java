@@ -1,4 +1,4 @@
-package com.easy.pojo;
+package com.easy.model;
 
 /**
  * author miekoz on 2016/3/17.
