@@ -1,8 +1,7 @@
 package com.easy.api;
 
 
-import com.easy.pojo.Goods;
-import com.easy.pojo.GoodsRepo;
+import com.easy.pojo.Gank;
 
 import retrofit.Call;
 import retrofit.http.GET;
@@ -15,8 +14,8 @@ import retrofit.http.Path;
 public interface MainService {
 
 
-    @GET("data/福利/{size}/{page}")
-    Call<GoodsRepo> getBenefitsGoods(
+    @GET("data/Android/{size}/{page}")
+    Call<Gank> getMainAndroid(
             @Path("size") int size,
             @Path("page") int page
     );

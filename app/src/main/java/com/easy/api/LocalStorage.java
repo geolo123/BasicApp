@@ -1,6 +1,6 @@
 package com.easy.api;
 
-import com.easy.pojo.Goods;
+import com.easy.pojo.GankDetails;
 import com.orhanobut.hawk.Hawk;
 
 /**
@@ -13,13 +13,13 @@ public class LocalStorage {
     private LocalStorage() {
     }
 
-    public static void saveMainData(Goods body) {
+    public static void saveMainData(GankDetails body) {
         Hawk.put(DATA_FULI, body);
     }
 
-    public static Goods getMainData() {
-        Goods data = Hawk.get(DATA_FULI);
-        if (data == null) data = new Goods();
+    public static GankDetails getMainData() {
+        GankDetails data = Hawk.get(DATA_FULI);
+        if (data == null) data = new GankDetails();
         return data;
     }
 }

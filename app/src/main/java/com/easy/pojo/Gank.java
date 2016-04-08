@@ -6,10 +6,10 @@ import java.util.List;
  * author miekoz on 2016/3/21.
  * email  meikoz@126.com
  */
-public class GoodsRepo extends CommonRepo{
-    private List<Goods> results;
+public class Gank extends CommonRepo{
+    private List<GankDetails> results;
 
-    public List<Goods> getResults() {
+    public List<GankDetails> getResults() {
         return results;
     }
 }

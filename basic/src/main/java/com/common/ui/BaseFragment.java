@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.common.api.OkHttpApi;
 
 import butterknife.ButterKnife;
 
@@ -45,7 +44,5 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
-        //取消请求
-        OkHttpApi.cancelRequest(getName());
     }
 }

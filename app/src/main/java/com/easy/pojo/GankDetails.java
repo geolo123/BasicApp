@@ -4,7 +4,7 @@ package com.easy.pojo;
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public class Goods {
+public class GankDetails {
     public String who;
     public String publishedAt;
     public String desc;

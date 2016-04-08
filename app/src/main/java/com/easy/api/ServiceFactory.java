@@ -1,7 +1,7 @@
 package com.easy.api;
 
-import com.common.api.RestApi;
-import com.easy.pojo.GoodsRepo;
+import com.common.api.HttpClientApi;
+import com.easy.pojo.Gank;
 
 import retrofit.Call;
 
@@ -15,13 +15,13 @@ public class ServiceFactory {
 
     public static MainService getMainIns(){
         if (mService == null){
-            mService = RestApi.getIns().createService(MainService.class);
+            mService = HttpClientApi.getIns().createService(MainService.class);
         }
         return mService;
     }
 
-    public Call<GoodsRepo> getBenefitsGoods(int size, int page){
-       return mService.getBenefitsGoods(size,page);
+    public Call<Gank> getBenefitsGoods(int size, int page){
+       return mService.getMainAndroid(size,page);
     }
 
 }

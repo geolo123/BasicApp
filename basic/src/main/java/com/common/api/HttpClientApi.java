@@ -15,21 +15,21 @@ import retrofit.RxJavaCallAdapterFactory;
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public class RestApi {
+public class HttpClientApi {
 
-    private static RestApi mInstance;
+    private static HttpClientApi mInstance;
     private Retrofit retrofit;
 
-    public static RestApi getIns(){
+    public static HttpClientApi getIns(){
         if (mInstance == null){
-            synchronized (RestApi.class){
-                if (mInstance == null) mInstance = new RestApi();
+            synchronized (HttpClientApi.class){
+                if (mInstance == null) mInstance = new HttpClientApi();
             }
         }
         return mInstance;
     }
 
-    public RestApi(){
+    public HttpClientApi(){
 
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setReadTimeout(7676, TimeUnit.MILLISECONDS);
