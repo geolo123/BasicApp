@@ -25,11 +25,16 @@
 package com.common.utils;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+
+import com.common.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
@@ -41,202 +46,251 @@ import java.util.Locale;
  */
 public class DateUtils {
 
-    public static String[] WEEK = new String[]{"天", "一", "二", "三", "四", "五", "六"};
+    // yyyy-MM-dd hh:mm:ss 12小时制
+    // yyyy-MM-dd HH:mm:ss 24小时制
+    public static final String TYPE_01 = "yyyy-MM-dd HH:mm:ss";
+    public static final String TYPE_02 = "yyyy-MM-dd";
+    public static final String TYPE_03 = "HH:mm:ss";
+    public static final String TYPE_04 = "yyyy年MM月dd日";
 
-    public static final long ONE_SECOND = 1000;
-    public static final long ONE_MINUTE = ONE_SECOND * 60;
-    public static final long ONE_HOUR = ONE_MINUTE * 60;
-    public static final long ONE_DAY = ONE_HOUR * 24;
+    public static String formatDate(long time, String format) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(time);
+        return new SimpleDateFormat(format).format(cal.getTime());
+    }
 
-    /**
-     * String 转换 Date
-     *
-     * @param str    str
-     * @param format format
-     * @return Date
-     */
-    public static Date string2Date(String str, String format) {
+    public static String formatDate(String longStr, String format) {
         try {
-            return new SimpleDateFormat(format).parse(str);
+            return formatDate(Long.parseLong(longStr), format);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static long formatStr(String timeStr, String pattern) {
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        try {
+            return sdf.parse(timeStr).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return new Date();
+
+        return 0;
     }
 
     /**
-     * String 转 String
-     *
-     * @param str          str
-     * @param format       format
-     * @param secondFormat secondFormat
-     * @return String
+     * 判断是否为闰年
      */
-    public static String string2String(String str, String format, String secondFormat) {
-        try {
-            return date2String(new SimpleDateFormat(format).parse(str).getTime(), secondFormat);
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public static boolean isLeapYear(int year) {
+        if (year % 100 == 0 && year % 400 == 0) {
+            return true;
+        } else if (year % 100 != 0 && year % 4 == 0) {
+            return true;
         }
-        return new Date().toString();
+        return false;
     }
 
     /**
-     * Date（long） 转换 String
-     *
-     * @param time   time
-     * @param format format
-     * @return String
+     * 得到某月有多少天数
      */
-    public static String date2String(long time, String format) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-        return sdf.format(time);
-    }
-
-    /**
-     * long 去除 时分秒
-     * 时分秒全部为0
-     *
-     * @param date date
-     * @return long
-     */
-    public static long getYearMonthDay(long date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        return calendar.getTimeInMillis();
-    }
-
-    /**
-     * 获取目标时间和当前时间之间的差距
-     *
-     * @param date date
-     * @return String
-     */
-    public static String getTimestampString(Date date) {
-        Date curDate = new Date();
-        long splitTime = curDate.getTime() - date.getTime();
-        if (splitTime < (30 * ONE_DAY)) {
-            if (splitTime < ONE_MINUTE) {
-                return "刚刚";
-            }
-            if (splitTime < ONE_HOUR) {
-                return String.format("%d分钟前", splitTime / ONE_MINUTE);
-            }
-
-            if (splitTime < ONE_DAY) {
-                return String.format("%d小时前", splitTime / ONE_HOUR);
-            }
-
-            return String.format("%d天前", splitTime / ONE_DAY);
+    public static int getDaysOfMonth(int year, int month) {
+        switch (month) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                if (isLeapYear(year))
+                    return 29;
+                else
+                    return 28;
+            default:
+                return 31;
         }
-        String result;
-        result = "M月d日 HH:mm";
-        return (new SimpleDateFormat(result, Locale.CHINA)).format(date);
     }
 
     /**
-     * 24小时制 转换 12小时制
-     *
-     * @param time time
-     * @return String
+     * 获取某年中的某月的第几天是星期几
      */
-    public static String time24To12(String time) {
-        String str[] = time.split(":");
-        int h = Integer.valueOf(str[0]);
-        int m = Integer.valueOf(str[1]);
-        String sx;
-        if (h < 1) {
-            h = 12;
-            sx = "上午";
-        } else if (h < 12) {
-            sx = "上午";
-        } else if (h < 13) {
-            sx = "下午";
+    public static int getWeekdayOfMonth(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month - 1, day);
+        return cal.get(Calendar.DAY_OF_WEEK);
+    }
+
+    /**
+     * 获取某年中的某月的第几天是星期几
+     */
+    public static String getWeekOfMonth(int year, int month, int day) {
+        int week = getWeekdayOfMonth(year, month, day);
+        return getWeekDayStr(week);
+    }
+
+    /**
+     * 获取现在是上午还是下午
+     *
+     * @return 0是上午，1是下午
+     */
+    public static int getAmOrPm() {
+        return Calendar.getInstance().get(Calendar.AM_PM);
+    }
+
+    public static int[] getCurrentYearAndMonth() {
+        return convertDateLongToDateIntArray(Calendar.getInstance().getTimeInMillis() / 1000);
+    }
+
+    public static long getCurrentSeconds() {
+        return Calendar.getInstance().getTimeInMillis() / 1000;
+    }
+
+    public static long getCurrentMillis() {
+        return Calendar.getInstance().getTimeInMillis();
+    }
+
+    public static String formatZero(int a) {
+        if (a == 0)
+            return "00";
+        if (a < 10)
+            return "0" + a;
+        return a + "";
+    }
+
+    public static String getWeekDayStr(int weekday) {
+        if (Calendar.MONDAY == weekday) {
+            return "周一";
+        } else if (Calendar.TUESDAY == weekday) {
+            return "周二";
+        } else if (Calendar.WEDNESDAY == weekday) {
+            return "周三";
+        } else if (Calendar.THURSDAY == weekday) {
+            return "周四";
+        } else if (Calendar.FRIDAY == weekday) {
+            return "周五";
+        } else if (Calendar.SATURDAY == weekday) {
+            return "周六";
+        } else if (Calendar.SUNDAY == weekday) {
+            return "周日";
         } else {
-            sx = "下午";
-            h -= 12;
+            return "Unknown";
         }
-        return String.format("%d:%02d%s", h, m, sx);
     }
 
-    /**
-     * Date 转换 HH
-     *
-     * @param date date
-     * @return String
-     */
-    public static String date2HH(Date date) {
-        return new SimpleDateFormat("HH").format(date);
+    public static String getAmPmStr(int ampm) {
+        if (ampm == 0) {
+            return "上午";
+        }
+        return "下午";
     }
 
-    /**
-     * Date 转换 HH:mm:ss
-     *
-     * @param date date
-     * @return String
-     */
-    public static String date2HHmm(Date date) {
-        return new SimpleDateFormat("HH:mm").format(date);
-    }
-
-    /**
-     * Date 转换 HH:mm:ss
-     *
-     * @param date date
-     * @return String
-     */
-    public static String date2HHmmss(Date date) {
-        return new SimpleDateFormat("HH:mm:ss").format(date);
-    }
-
-    /**
-     * Date 转换 MM.dd
-     *
-     * @param date date
-     * @return String
-     */
-    public static String date2MMdd(Date date) {
-        return new SimpleDateFormat("MM.dd").format(date);
-    }
-
-    /**
-     * Date 转换 yyyy.MM.dd
-     *
-     * @param date date
-     * @return String
-     */
-    public static String date2yyyyMMdd(Date date) {
-        return new SimpleDateFormat("yyyy.MM.dd").format(date);
-    }
-
-    /**
-     * Date 转换 MM月dd日 星期
-     *
-     * @param date date
-     * @return String
-     */
-    public static String date2MMddWeek(Date date) {
+    public static String getTimeView(long time) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        return new SimpleDateFormat("MM月dd日 星期").format(date) + WEEK[dayOfWeek - 1];
+        calendar.setTime(new Date(time * 1000));
+        int mouth = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(calendar.DAY_OF_MONTH);
+        int weekday = calendar.get(calendar.DAY_OF_WEEK);
+        int ampm = calendar.get(calendar.AM_PM);
+        int hour = calendar.get(calendar.HOUR);
+        int minute = calendar.get(calendar.MINUTE);
+        return mouth + "月" + day + "日 " + getWeekDayStr(weekday) + " " + getAmPmStr(ampm) + " " + formatZero(hour) + ":" + formatZero(minute);
     }
 
     /**
-     * Date 转换 yyyy年MM月dd日 星期
-     *
-     * @param date date
-     * @return String
+     * 将long型的秒数转换为int[]的年、月、日、时、分、秒数组
      */
-    public static String date2yyyyMMddWeek(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        return new SimpleDateFormat("yyyy年MM月dd日 星期").format(date) + WEEK[dayOfWeek - 1];
+    public static int[] convertDateLongToDateIntArray(long time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        String str = sdf.format(new Date(time * 1000));
+        int[] result = new int[6];
+        result[0] = Integer.parseInt(str.split("-")[0]);
+        result[1] = Integer.parseInt(str.split("-")[1]);
+        result[2] = Integer.parseInt(str.split("-")[2]);
+        result[3] = Integer.parseInt(str.split("-")[3]);
+        result[4] = Integer.parseInt(str.split("-")[4]);
+        result[5] = Integer.parseInt(str.split("-")[5]);
+        return result;
     }
+
+    /**
+     * 将String类型的日期转换为long型的秒数
+     */
+    public static long convertDateStringToDateLong(String dateString) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        try {
+            Date date = sdf.parse(dateString);
+            return date.getTime() / 1000;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * @param time
+     * @return 6月25日 周四  下午 16:00
+     */
+    public static String getSpecificDateFormat(long time) {
+        Date currentDate = new Date(time);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        GregorianCalendar ca = new GregorianCalendar();
+        ca.setTime(currentDate);
+        StringBuffer stringBuffer = new StringBuffer("");
+        SimpleDateFormat formatMonth = new SimpleDateFormat("M月dd日 ");
+        SimpleDateFormat formatDay = new SimpleDateFormat("HH:mm");
+        int weekday = Integer.valueOf(calendar.get(calendar.DAY_OF_WEEK));
+        stringBuffer.append(formatMonth.format(currentDate));
+        stringBuffer.append(getWeekDayStr(weekday));
+        stringBuffer.append(ca.get(GregorianCalendar.AM_PM) == 0 ? " 上午 " : " 下午 ");
+        stringBuffer.append(formatDay.format(currentDate));
+        return stringBuffer.toString();
+    }
+
+    /**
+     * @param context
+     * @param time 毫秒
+     * @return 获得时间字符串
+     */
+    public static String getDateStr(Context context, long time) {
+        Resources res = context.getResources();
+        StringBuffer buffer = new StringBuffer();
+        Calendar createCal = Calendar.getInstance();
+
+        createCal.setTimeInMillis(time);
+        Calendar currentcal = Calendar.getInstance();
+        currentcal.setTimeInMillis(System.currentTimeMillis());
+
+        long diffTime = (currentcal.getTimeInMillis() - createCal.getTimeInMillis()) / 1000;
+
+        // 同一月
+        if (currentcal.get(Calendar.MONTH) == createCal.get(Calendar.MONTH)) {
+            // 同一天
+            if (currentcal.get(Calendar.DAY_OF_MONTH) == createCal.get(Calendar.DAY_OF_MONTH)) {
+                if (diffTime < 3600 && diffTime >= 60) {
+                    buffer.append((diffTime / 60) + res.getString(R.string.msg_few_minutes_ago));
+                } else if (diffTime < 60) {
+                    buffer.append(res.getString(R.string.msg_now));
+                } else {
+                    buffer.append(res.getString(R.string.msg_today)).append(" ").append(formatDate(createCal.getTimeInMillis(), "HH:mm"));
+                }
+            }
+            // 前一天
+            else if (currentcal.get(Calendar.DAY_OF_MONTH) - createCal.get(Calendar.DAY_OF_MONTH) == 1) {
+                buffer.append(res.getString(R.string.msg_yesterday)).append(" ").append(formatDate(createCal.getTimeInMillis(), "HH:mm"));
+            }
+        }
+
+        if (buffer.length() == 0) {
+            buffer.append(formatDate(createCal.getTimeInMillis(), "MM-dd HH:mm"));
+        }
+
+        String timeStr = buffer.toString();
+        if (currentcal.get(Calendar.YEAR) != createCal.get(Calendar.YEAR)) {
+            timeStr = createCal.get(Calendar.YEAR) + " " + timeStr;
+        }
+        return timeStr;
+    }
+
 
 }

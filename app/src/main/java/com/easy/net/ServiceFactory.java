@@ -1,6 +1,6 @@
 package com.easy.net;
 
-import com.common.api.RestPool;
+import com.common.control.HttpControl;
 import com.easy.model.Gank;
 
 import retrofit2.Call;
@@ -16,7 +16,7 @@ public class ServiceFactory {
 
     public static ApiService getMainIns(){
         if (mService == null){
-            mService = RestPool.getIns().createService(ApiService.class);
+            mService = HttpControl.getIns().createService(ApiService.class);
         }
         return mService;
     }

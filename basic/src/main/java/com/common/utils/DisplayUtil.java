@@ -5,7 +5,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
-public class ScreenUtils {
+public class DisplayUtil {
 
 	public static int px2sp(Context context, float pxValue) {
 		final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;

@@ -2,8 +2,8 @@ package com.easy.ui.adapter;
 
 import android.content.Context;
 
-import com.common.comm.CommonAdapter;
-import com.common.comm.ViewHolder;
+import com.common.basic.CommonAdapter;
+import com.common.basic.ViewHolder;
 import com.easy.R;
 import com.easy.model.GankDetails;
 

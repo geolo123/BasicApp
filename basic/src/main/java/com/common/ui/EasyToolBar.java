@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.common.R;
-import com.common.utils.ScreenUtils;
+import com.common.utils.DisplayUtil;
 
 /**
  * author miekoz on 2016/3/15.
@@ -48,7 +48,7 @@ public class EasyToolBar extends RelativeLayout implements View.OnClickListener 
        View rootView = inflate(getContext(), R.layout.layout_nav_toolbar, this);
         mlvTitleRight = (LinearLayout) rootView.findViewById(R.id.lv_title_right);
         mTvTitle = (TextView) rootView.findViewById(R.id.tv_title);
-        int padding = ScreenUtils.dp2px(getContext(), 15);
+        int padding = DisplayUtil.dp2px(getContext(), 15);
         setPadding(padding, 0, padding, 0);
         setBackgroundResource(R.color.white);
         rootView.findViewById(R.id.lv_title_left).setOnClickListener(this);

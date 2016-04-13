@@ -12,7 +12,6 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.common.R;
-import com.common.utils.IntentUtils;
 import com.common.utils.WebViewUtil;
 
 /**
@@ -83,11 +82,11 @@ public class WebViewActivity extends BaseActivity {
     }
 
     private String getUrl() {
-        return IntentUtils.getStringExtra(this.getIntent(), "url");
+        return this.getIntent().getStringExtra("url");
     }
 
     private String getUrlTitle() {
-        return IntentUtils.getStringExtra(this.getIntent(), "title");
+        return this.getIntent().getStringExtra("title");
     }
 
     private void enableCustomClients() {

@@ -3,6 +3,7 @@ package com.common;
 import android.app.Application;
 import android.util.Config;
 
+import com.common.control.BDLocationControl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.orhanobut.logger.LogLevel;
@@ -12,10 +13,10 @@ import com.orhanobut.logger.Logger;
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public class EasyApp extends Application{
+public class EasyApplication extends Application{
     public Gson gson;
-    private static EasyApp ourInstance = new EasyApp();
-    public static EasyApp getInstance() {
+    private static EasyApplication ourInstance = new EasyApplication();
+    public static EasyApplication getInstance() {
         return ourInstance;
     }
 
@@ -30,6 +31,8 @@ public class EasyApp extends Application{
         else logLevel=LogLevel.NONE;
 
         Logger.init().methodOffset(2).methodCount(2).logLevel(logLevel);
+
+        new BDLocationControl(this).doStartLocation();
     }
 
     private void initGson() {

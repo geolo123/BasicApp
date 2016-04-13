@@ -1,4 +1,4 @@
-package com.common.comm;
+package com.common.basic;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +12,7 @@ import java.util.List;
  * email  meikoz@126.com
  */
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
+
     private final List<Fragment> mFragments = new ArrayList<>();
     private final List<String> mFragmentTitles = new ArrayList<>();
 

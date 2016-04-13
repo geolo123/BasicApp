@@ -1,7 +1,7 @@
-package com.common.api;
+package com.common.control;
 
 import com.common.Constant;
-import com.common.EasyApp;
+import com.common.EasyApplication;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -14,21 +14,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public class RestPool {
+public class HttpControl {
 
-    private static RestPool mInstance;
+    private static HttpControl mInstance;
     private Retrofit retrofit;
 
-    public static RestPool getIns(){
+    public static HttpControl getIns(){
         if (mInstance == null){
-            synchronized (RestPool.class){
-                if (mInstance == null) mInstance = new RestPool();
+            synchronized (HttpControl.class){
+                if (mInstance == null) mInstance = new HttpControl();
             }
         }
         return mInstance;
     }
 
-    public RestPool(){
+    public HttpControl(){
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -42,7 +42,7 @@ public class RestPool {
         retrofit = new Retrofit.Builder()
                 .baseUrl(Constant.BASE_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(EasyApp.getInstance().gson))
+                .addConverterFactory(GsonConverterFactory.create(EasyApplication.getInstance().gson))
                 .client(okHttpClient)
                 .build();
     }
