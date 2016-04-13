@@ -1,13 +1,10 @@
 package com.common;
 
 import android.app.Application;
-import android.util.Config;
 
 import com.common.control.BDLocationControl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.orhanobut.logger.LogLevel;
-import com.orhanobut.logger.Logger;
 
 /**
  * author miekoz on 2016/3/17.
@@ -26,11 +23,11 @@ public class EasyApplication extends Application{
         ourInstance = this;
         this.initGson();
 
-        LogLevel logLevel;
-        if (Config.DEBUG)logLevel =LogLevel.FULL;
-        else logLevel=LogLevel.NONE;
-
-        Logger.init().methodOffset(2).methodCount(2).logLevel(logLevel);
+//        LogLevel logLevel;
+//        if (Config.DEBUG)logLevel =LogLevel.FULL;
+//        else logLevel=LogLevel.NONE;
+//
+//        Logger.init().methodOffset(2).methodCount(2).logLevel(logLevel);
 
         new BDLocationControl(this).doStartLocation();
     }
