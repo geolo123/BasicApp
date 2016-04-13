@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/basic/libs/BaiduLBS_Android.jar" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/basic/src/main/java/com/common/basic/ListViewAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/basic/src/main/java/com/common/utils/NetWorkUtil.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic/src/main/java/com/common/utils/PhoneUtil.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/basic/src/main/java/com/common/widget/GlideCircleTransform.java" charset="GBK" />
