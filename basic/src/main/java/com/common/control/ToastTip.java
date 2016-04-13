@@ -12,7 +12,7 @@ public class ToastTip {
 
     static Toast mToast;
 
-    static void show(CharSequence message) {
+    public static void show(CharSequence message) {
         if (mToast == null) mToast.cancel();
         int duration = Toast.LENGTH_SHORT;
         if (message.length() > 10) {
