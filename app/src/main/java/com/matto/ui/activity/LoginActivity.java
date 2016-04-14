@@ -1,12 +1,14 @@
-package com.matto.view;
+package com.matto.ui.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.common.ui.BaseActivity;
 import com.matto.R;
-import com.matto.app.LogicProxy;
+import com.common.control.LogicProxy;
 import com.matto.logic.LoginLogic;
 
 import butterknife.Bind;
@@ -17,6 +19,12 @@ import butterknife.OnClick;
  * email  meikoz@126.com
  */
 public class LoginActivity extends BaseActivity implements LoginLogic.LoginView {
+
+    public static void start(Activity activity) {
+        Intent intent = new Intent(activity, LoginActivity.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
 
     @Bind(R.id.name)
     EditText name;
@@ -33,7 +41,7 @@ public class LoginActivity extends BaseActivity implements LoginLogic.LoginView 
     }
 
     @Override
-    protected void onInitData() {
+    protected void onInitView() {
         mLoginLogic = LogicProxy.getInstance().getBindViewProxy(LoginLogic.class, this);
     }
 

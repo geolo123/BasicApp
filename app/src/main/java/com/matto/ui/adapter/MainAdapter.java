@@ -5,7 +5,7 @@ import android.content.Context;
 import com.common.apdater.BasicAdapter;
 import com.common.apdater.BasicViewHolder;
 import com.matto.R;
-import com.matto.model.GankDetails;
+import com.matto.pojo.GankDetails;
 
 import java.util.List;
 

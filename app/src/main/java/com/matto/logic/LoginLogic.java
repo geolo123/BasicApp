@@ -1,6 +1,7 @@
 package com.matto.logic;
 
-import com.matto.app.annotation.Implement;
+import com.common.control.LogicControl;
+import com.common.control.annotation.Implement;
 
 
 /**

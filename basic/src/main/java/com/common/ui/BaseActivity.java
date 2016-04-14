@@ -23,12 +23,12 @@ public abstract class BaseActivity extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(getLayoutResource());
         ButterKnife.bind(this);
-        this.onInitData();
+        onInitView();
     }
 
     protected abstract int getLayoutResource();
 
-    protected abstract void onInitData();
+    protected abstract void onInitView();
 
     protected void initTitleBar(String title) {
         findTitleBar();

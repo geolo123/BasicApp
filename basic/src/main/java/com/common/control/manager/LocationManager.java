@@ -1,4 +1,4 @@
-package com.common.control;
+package com.common.control.manager;
 
 import android.content.Context;
 
@@ -11,7 +11,7 @@ import com.baidu.location.LocationClientOption;
  * author meikoz on 2016/4/13.
  * email  meikoz@126.com
  */
-public class BDLocationControl {
+public class LocationManager {
 
     private double latitude, longitude;
     private Context mContext;
@@ -31,7 +31,7 @@ public class BDLocationControl {
         }
     };
 
-    public BDLocationControl(Context context) {
+    public LocationManager(Context context) {
         this.mContext = context;
     }
 

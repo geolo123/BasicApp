@@ -1,6 +1,7 @@
 package com.matto.app;
 
 import com.common.EasyApplication;
+import com.common.control.LogicProxy;
 import com.matto.logic.LoginLogic;
 
 /**

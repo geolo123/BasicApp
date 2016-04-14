@@ -1,7 +1,7 @@
 package com.matto.net;
 
 
-import com.matto.model.Gank;
+import com.matto.pojo.Gank;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

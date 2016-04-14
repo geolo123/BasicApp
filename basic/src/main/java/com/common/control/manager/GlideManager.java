@@ -1,4 +1,4 @@
-package com.common.control;
+package com.common.control.manager;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,18 +12,18 @@ import com.common.widget.GlideCircleTransform;
  * author meikoz on 2016/4/13.
  * email  meikoz@126.com
  */
-public class GlideControl {
+public class GlideManager {
 
     public static final String ANDROID_RESOURCE = "android.resource://";
     public static final String FOREWARD_SLASH = "/";
 
-    private GlideControl() {}
+    private GlideManager() {}
 
     private static class GlideControlHolder {
-        private static GlideControl instance = new GlideControl();
+        private static GlideManager instance = new GlideManager();
     }
 
-    public static GlideControl getInstance() {
+    public static GlideManager getInstance() {
         return GlideControlHolder.instance;
     }
 

@@ -1,9 +1,8 @@
-package com.matto.app;
+package com.common.control;
 
 import android.util.Log;
 
-import com.matto.app.annotation.Implement;
-import com.matto.logic.LogicControl;
+import com.common.control.annotation.Implement;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
@@ -47,15 +46,6 @@ public class LogicProxy {
                 }
             }
         }
-        /*
-        m_proxy = Proxy.newProxyInstance(LogicProxy.class.getClassLoader(), list.toArray(new Class[0]), new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object... args) throws Throwable {
-                Class<?> declaringClass = method.getDeclaringClass();
-                Object o = m_objects.get(declaringClass);
-                return method.invoke(o, args);
-            }
-        });*/
     }
 
     public <T> T getProxy(Class cls) {

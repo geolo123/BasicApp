@@ -2,7 +2,7 @@ package com.common;
 
 import android.app.Application;
 
-import com.common.control.BDLocationControl;
+import com.common.control.manager.LocationManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -29,7 +29,7 @@ public class EasyApplication extends Application{
 //
 //        Logger.init().methodOffset(2).methodCount(2).logLevel(logLevel);
 
-        new BDLocationControl(this).doStartLocation();
+        new LocationManager(this).doStartLocation();
     }
 
     private void initGson() {
