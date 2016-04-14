@@ -12,26 +12,18 @@ public class LoginLogicImpl implements LoginLogic {
 
     @Override
     public void login(String name, String passwrod) {
-        if (!name.equals("zhangsan") || !passwrod.equals(123)) {
-//            ToastTip.show("deng");
-            Log.d("cs", "登录成功");
-            mView.onLoginFail();
+        if (name.equals("zhangsan") && passwrod.equals(123)) {
+            Log.d("cs", "登录成功,通知Activity");
+            mView.onLoginSuccess();
         } else {
-            Log.d("cs", "登录成功2222");
-//            ToastTip.show("2222");
-//            mView.onLoginSuccess();
+            Log.d("cs", "登录失败,通知UI");
+            mView.onLoginSuccess();
         }
     }
 
     @Override
     public void attachView(LoginView mvpView) {
-        Log.d("cs", "拿到LoginView");
         this.mView = mvpView;
     }
 
-//    @Override
-//    public void attachView(LoginView mvpView) {
-//        Log.d("cs", "拿到view");
-//        this.mView = mvpView;
-//    }
 }

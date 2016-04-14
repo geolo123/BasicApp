@@ -1,5 +1,6 @@
 package com.matto.ui.activity;
 
+import android.content.Intent;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
@@ -45,7 +46,9 @@ public class SplashActivity extends BaseActivity {
         AnimationUtil.setAnimationListener(animation, new AnimationUtil.AnimListener() {
             @Override
             public void onAnimFinish() {
-                LoginActivity.start(SplashActivity.this);
+                startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+//                finish();
+//                LoginActivity.start(SplashActivity.this);
             }
         });
     }

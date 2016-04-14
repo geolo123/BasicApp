@@ -13,12 +13,15 @@ public class ToastTip {
     static Toast mToast;
 
     public static void show(CharSequence message) {
-        if (mToast == null) mToast.cancel();
-        int duration = Toast.LENGTH_SHORT;
-        if (message.length() > 10) {
-            duration = Toast.LENGTH_LONG;
+        if (mToast == null) {
+            int duration = Toast.LENGTH_SHORT;
+            if (message.length() > 10) {
+                duration = Toast.LENGTH_LONG;
+            }
+            mToast = Toast.makeText(EasyApplication.getInstance(), message, duration);
+        } else {
+            mToast.setText(message);
         }
-        mToast = Toast.makeText(EasyApplication.getInstance(), message, duration);
         mToast.show();
     }
 }

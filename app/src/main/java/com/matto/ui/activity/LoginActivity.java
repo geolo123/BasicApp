@@ -25,14 +25,8 @@ public class LoginActivity extends BaseActivity implements LoginLogic.LoginView 
         activity.startActivity(intent);
         activity.finish();
     }
-
-    @Bind(R.id.name)
-    EditText name;
-    @Bind(R.id.passwrod)
-    EditText passwrod;
-    @Bind(R.id.login)
-    Button login;
-
+    @Bind(R.id.edit_username) EditText mEditName;
+    @Bind(R.id.edit_passwrod) EditText mEditPasswrod;
     LoginLogic mLoginLogic;
 
     @Override
@@ -45,18 +39,18 @@ public class LoginActivity extends BaseActivity implements LoginLogic.LoginView 
         mLoginLogic = LogicProxy.getInstance().getBindViewProxy(LoginLogic.class, this);
     }
 
-    @OnClick(R.id.login)
+    @OnClick(R.id.btn_login)
     void login() {
         mLoginLogic.login("zhangsan", "12344");
     }
 
     @Override
     public void onLoginSuccess() {
-        Log.d("cs", "成功222wdwadwadwadwa2");
+        Log.d("cs", "登录成功");
     }
 
     @Override
     public void onLoginFail() {
-        Log.d("cs", "登wdadwadwadwaddwa2");
+        Log.d("cs", "登录失败");
     }
 }

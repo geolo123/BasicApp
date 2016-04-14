@@ -3,7 +3,6 @@ package com.matto.ui.activity;
 import android.os.Bundle;
 
 import com.common.ui.BaseActivity;
-import com.common.ui.ReplaceActivity;
 
 
 public class MainActivity extends BaseActivity {

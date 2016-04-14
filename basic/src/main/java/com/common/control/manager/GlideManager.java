@@ -32,15 +32,6 @@ public class GlideManager {
         return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
     }
 
-    // 加载网络图片
-    public void loadUrlImage(Context context, String url, ImageView imageView) {
-        Glide.with(context)
-                .load(url)
-                .placeholder(R.color.view_black_default)
-                .error(R.color.view_black_default)
-                .crossFade()
-                .into(imageView);
-    }
 
     // 加载drawable图片
     public void loadResImage(Context context, int resId, ImageView imageView) {

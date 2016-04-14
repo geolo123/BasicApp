@@ -16,7 +16,6 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends FragmentActivity {
 
     protected EasyToolBar mTitleBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +24,6 @@ public abstract class BaseActivity extends FragmentActivity {
         ButterKnife.bind(this);
         onInitView();
     }
-
     protected abstract int getLayoutResource();
 
     protected abstract void onInitView();
@@ -39,13 +37,23 @@ public abstract class BaseActivity extends FragmentActivity {
         mTitleBar = (EasyToolBar) findViewById(R.id.toolbar);
     }
 
-    public void startActivity(Intent intent) {
-        super.startActivity(intent);
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        if (intent != null && intent.getComponent() != null) {
+            overridePendingTransition(R.anim.move_right_in_activity, R.anim.hold_long);
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.hold_long, R.anim.move_right_out_activity);
     }
 }
