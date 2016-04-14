@@ -12,11 +12,11 @@ import retrofit2.Call;
  */
 public class ServiceFactory {
 
-    private static ApiService mService;
+    private static MainService mService;
 
-    public static ApiService getMainIns(){
+    public static MainService getMainIns(){
         if (mService == null){
-            mService = HttpControl.getIns().createService(ApiService.class);
+            mService = HttpControl.getIns().createService(MainService.class);
         }
         return mService;
     }

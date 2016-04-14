@@ -11,7 +11,7 @@ import retrofit2.http.Path;
  * author miekoz on 2016/3/17.
  * email  meikoz@126.com
  */
-public interface ApiService {
+public interface MainService {
 
 
     @GET("data/Android/{size}/{page}")

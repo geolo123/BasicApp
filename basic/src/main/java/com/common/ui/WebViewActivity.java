@@ -44,7 +44,7 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void onInitData() {
+    protected void onInitView() {
         webviewPb = (ProgressBar) this.findViewById(R.id.webview_pb);
         webview = (WebView) this.findViewById(R.id.webview);
         toolbar = (EasyToolBar) this.findViewById(R.id.toolbar);
