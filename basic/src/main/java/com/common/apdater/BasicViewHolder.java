@@ -1,4 +1,4 @@
-package com.common.basic;
+package com.common.apdater;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,16 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * author miekoz on 2016/3/17.
+ * author meikoz on 2016/4/14.
  * email  meikoz@126.com
  */
-public class ViewHolder {
+public class BasicViewHolder {
     private final SparseArray<View> mViews;
     private int mPosition;
     private View mConvertView;
 
-    private ViewHolder(Context context, ViewGroup parent, int layoutId,
-                       int position) {
+    private BasicViewHolder(Context context, ViewGroup parent, int layoutId,
+                            int position) {
         this.mPosition = position;
         this.mViews = new SparseArray<View>();
         mConvertView = LayoutInflater.from(context).inflate(layoutId, parent,
@@ -38,12 +38,12 @@ public class ViewHolder {
      * @param position
      * @return
      */
-    public static ViewHolder get(Context context, View convertView,
+    public static BasicViewHolder get(Context context, View convertView,
                                  ViewGroup parent, int layoutId, int position) {
         if (convertView == null) {
-            return new ViewHolder(context, parent, layoutId, position);
+            return new BasicViewHolder(context, parent, layoutId, position);
         }
-        return (ViewHolder) convertView.getTag();
+        return (BasicViewHolder) convertView.getTag();
     }
 
     public View getConvertView() {
@@ -72,7 +72,7 @@ public class ViewHolder {
      * @param text
      * @return
      */
-    public ViewHolder setText(int viewId, String text) {
+    public BasicViewHolder setText(int viewId, String text) {
         TextView view = getView(viewId);
         view.setText(text);
         return this;
@@ -85,7 +85,7 @@ public class ViewHolder {
      * @param drawableId
      * @return
      */
-    public ViewHolder setImageResource(int viewId, int drawableId) {
+    public BasicViewHolder setImageResource(int viewId, int drawableId) {
         ImageView view = getView(viewId);
         view.setImageResource(drawableId);
 
@@ -99,7 +99,7 @@ public class ViewHolder {
      * @param
      * @return
      */
-    public ViewHolder setImageBitmap(int viewId, Bitmap bm) {
+    public BasicViewHolder setImageBitmap(int viewId, Bitmap bm) {
         ImageView view = getView(viewId);
         view.setImageBitmap(bm);
         return this;
@@ -108,5 +108,4 @@ public class ViewHolder {
     public int getPosition() {
         return mPosition;
     }
-
 }

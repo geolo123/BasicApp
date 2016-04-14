@@ -1,4 +1,4 @@
-package com.common.basic;
+package com.common.apdater;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

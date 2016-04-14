@@ -1,4 +1,4 @@
-package com.common.basic;
+package com.common.apdater;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,12 +11,12 @@ import java.util.List;
  * author miekoz on 2016/3/21.
  * email  meikoz@126.com
  */
-public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
+public class MainFragmentAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> mFragments = new ArrayList<>();
     private final List<String> mFragmentTitles = new ArrayList<>();
 
-    public MainFragmentPagerAdapter(FragmentManager fm) {
+    public MainFragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
