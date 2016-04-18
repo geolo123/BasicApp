@@ -41,7 +41,7 @@ public class LoginActivity extends BaseActivity implements LoginLogic.LoginView 
 
     @OnClick(R.id.btn_login)
     void login() {
-        mLoginLogic.login("zhangsan", "12344");
+        mLoginLogic.login("zhangsan", "123");
     }
 
     @Override

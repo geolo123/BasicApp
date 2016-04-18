@@ -1,6 +1,6 @@
 package com.matto.net;
 
-import com.common.control.HttpControl;
+import com.common.control.HttpClient;
 import com.matto.pojo.Gank;
 
 import retrofit2.Call;
@@ -16,7 +16,7 @@ public class ServiceFactory {
 
     public static MainService getMainIns(){
         if (mService == null){
-            mService = HttpControl.getIns().createService(MainService.class);
+            mService = HttpClient.getIns().createService(MainService.class);
         }
         return mService;
     }

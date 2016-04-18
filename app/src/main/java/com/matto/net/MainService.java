@@ -5,6 +5,7 @@ import com.matto.pojo.Gank;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
 /**
@@ -13,7 +14,7 @@ import retrofit2.http.Path;
  */
 public interface MainService {
 
-
+    @Headers("Cache-Control: public, max-age=3600")
     @GET("data/Android/{size}/{page}")
     Call<Gank> getMainAndroid(
             @Path("size") int size,
