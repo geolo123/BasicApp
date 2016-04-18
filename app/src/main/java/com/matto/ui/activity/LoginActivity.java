@@ -3,10 +3,12 @@ package com.matto.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.common.ui.BaseActivity;
+import com.common.widget.OnClickEvent;
 import com.matto.R;
 import com.common.control.LogicProxy;
 import com.matto.logic.LoginLogic;
@@ -27,7 +29,9 @@ public class LoginActivity extends BaseActivity implements LoginLogic.LoginView 
     }
     @Bind(R.id.edit_username) EditText mEditName;
     @Bind(R.id.edit_passwrod) EditText mEditPasswrod;
+    @Bind(R.id.btn_login) Button mLogin;
     LoginLogic mLoginLogic;
+    public int i= 1;
 
     @Override
     protected int getLayoutResource() {
@@ -37,12 +41,19 @@ public class LoginActivity extends BaseActivity implements LoginLogic.LoginView 
     @Override
     protected void onInitView() {
         mLoginLogic = LogicProxy.getInstance().getBindViewProxy(LoginLogic.class, this);
+        mLogin.setOnClickListener(new OnClickEvent() {
+            @Override
+            public void singleClick(View v) {
+                Log.d("cs",i++ +"");
+//                mLoginLogic.login("zhangsan", "123");
+            }
+        });
     }
 
-    @OnClick(R.id.btn_login)
-    void login() {
-        mLoginLogic.login("zhangsan", "123");
-    }
+//    @OnClick(R.id.btn_login)
+//    void login() {
+//        mLoginLogic.login("zhangsan", "123");
+//    }
 
     @Override
     public void onLoginSuccess() {

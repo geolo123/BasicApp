@@ -1,13 +1,24 @@
-## 我眼中的 Android 应用架构
+## BasicApp功能介绍
+#### v1.0功能简介
+-   Retrofit            网络请求封装
+-   ServiceFactory      管理所有根据业务区分的Service
+-   ToastTip            Toast提示的统一处理
+-   SplashActivity      启动页面增加ScaleAnimation动画
+-   BasicAdapter        ListView 的公共Adapter
+-   RecyclerAdapter     RecyclerView的公共Adapter
+-   BaseActivity        BaseFragment UI的公共基类
 
-完成一些项目之后,发现每个项目中有一部分内容是重复的,这样就可以把重复的一部分提取出
-来,根据个人开发经验,如果正确设计一个Android 应用架构.
-好的应用架构应该有如下特点:
 
->   一个好的网络请求框架
->   View 不应该参杂太多业务逻辑
->   重复代码不要太多
->   易于拓展、易于修改
+#### v1.1增加mvp架构
+-   LogicProxy          mvp模式P层 Impl的初始化和View层进行绑定
+-   LogicControl        PresenterImpl 和View的绑定
+-   LoginImpl           mvp示例代码
+-   GlideManager        Glide图片动态加载统一管理
+-   LocationManager     百度地图定位管理类
 
-#### v1.2增加Retrofit离线加载数据功能
-> 增加离线加载缓存数据策略
+#### v1.2通知栏沉浸式实现
+-   StatusBarUtil       通知栏自定义样式
+-   SwipBackActivity    仿简书实现右滑finsh页面 
+-   WebViewActivity     WebView页面统一管理 实现仿微信进度条加载
+-   EasyToolBar         自定义导航TitleBar
+-   OnClickEvent        自定义按钮点击事件 可以控制Button的频繁点击
