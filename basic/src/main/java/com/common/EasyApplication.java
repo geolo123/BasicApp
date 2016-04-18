@@ -3,7 +3,8 @@ package com.common;
 import android.app.Application;
 import android.content.Context;
 
-import com.common.control.manager.LocationManager;
+import com.common.model.basic.LocationTip;
+import com.common.view.Constant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -37,7 +38,7 @@ public class EasyApplication extends Application {
 //
 //        Logger.init().methodOffset(2).methodCount(2).logLevel(logLevel);
 
-        new LocationManager(this).doStartLocation();
+        new LocationTip(this).doStartLocation();
     }
 
     private void initGson() {

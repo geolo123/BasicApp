@@ -1,5 +1,4 @@
 ## BasicApp功能介绍
->   更多:http://meikoz.github.io/
 >   欢迎Follow我的Github:https://github.com/meikoz
 
 #### v1.0功能简介
