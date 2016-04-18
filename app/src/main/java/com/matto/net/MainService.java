@@ -14,6 +14,9 @@ import retrofit2.http.Path;
  */
 public interface MainService {
 
+    /**
+     * 使用缓存机制
+     */
     @Headers("Cache-Control: public, max-age=3600")
     @GET("data/Android/{size}/{page}")
     Call<Gank> getMainAndroid(
