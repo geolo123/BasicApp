@@ -1,6 +1,7 @@
 package com.matto.model;
 
 import com.matto.R;
+import com.matto.ui.view.MainView;
 
 /**
  * author meikoz on 2016/4/19.

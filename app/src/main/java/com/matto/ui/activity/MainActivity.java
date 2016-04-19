@@ -3,6 +3,7 @@ package com.matto.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.common.model.control.LogicProxy;
@@ -10,7 +11,6 @@ import com.common.view.ui.BaseActivity;
 import com.matto.R;
 import com.matto.model.MainLogic;
 import com.matto.ui.fragment.DiscoveryFragment;
-import com.matto.ui.fragment.HomeFragment;
 import com.matto.ui.fragment.ShowMeFragment;
 import com.matto.ui.view.MainView;
 
@@ -42,20 +42,23 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void switchHome() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new HomeFragment()).commit();
+        startFragment(new DiscoveryFragment());
     }
 
     @Override
     public void switchDiscovery() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new DiscoveryFragment()).commit();
+        startFragment(new DiscoveryFragment());
     }
 
     @Override
     public void switchShomeMe() {
+        startFragment(new ShowMeFragment());
+    }
+
+    void startFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ShowMeFragment()).commit();
+                .replace(R.id.frame_layout, fragment)
+                .commit();
     }
 
 

@@ -12,4 +12,5 @@ import com.matto.ui.view.MainView;
 public interface MainLogic extends MvpLogic<MainView> {
 
     void switchNavigation(int id);
+
 }
