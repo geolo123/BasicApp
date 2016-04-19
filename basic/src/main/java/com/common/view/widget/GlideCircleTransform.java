@@ -45,6 +45,6 @@ public class GlideCircleTransform extends BitmapTransformation {
 
     @Override
     public String getId() {
-        return getClass().getName();
+        return getClass().getName();、、
     }
 }
