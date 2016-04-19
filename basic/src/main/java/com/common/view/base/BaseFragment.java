@@ -1,4 +1,4 @@
-package com.common.view.ui;
+package com.common.view.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

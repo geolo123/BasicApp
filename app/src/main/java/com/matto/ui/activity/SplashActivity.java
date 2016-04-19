@@ -5,8 +5,8 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
-import com.common.view.ui.BaseActivity;
-import com.common.view.ui.StatusBarUtil;
+import com.common.view.base.BaseActivity;
+import com.common.view.base.StatusBarUtil;
 import com.matto.R;
 import com.matto.util.AnimationUtil;
 

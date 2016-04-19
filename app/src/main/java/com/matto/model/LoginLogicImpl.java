@@ -5,6 +5,7 @@ import android.util.Log;
 import com.matto.model.http.MainService;
 import com.matto.model.http.ServiceFactory;
 import com.matto.pojo.Gank;
+import com.matto.ui.view.LoginView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

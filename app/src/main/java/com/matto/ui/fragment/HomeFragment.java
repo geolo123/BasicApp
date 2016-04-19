@@ -1,6 +1,6 @@
 package com.matto.ui.fragment;
 
-import com.common.view.ui.BaseFragment;
+import com.common.view.base.BaseFragment;
 import com.matto.R;
 
 /**

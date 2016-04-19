@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name="com.common.view.ui.WebViewActivity" />
+        <activity android:name="com.common.view.base.WebViewActivity" />
     </application>
 
 </manifest>

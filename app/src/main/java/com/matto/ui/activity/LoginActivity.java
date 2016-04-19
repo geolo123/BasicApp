@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.widget.EditText;
 
 import com.common.model.basic.ToastTip;
-import com.common.view.ui.BaseActivity;
+import com.common.view.base.BaseActivity;
 import com.matto.R;
 import com.common.model.control.LogicProxy;
 import com.matto.model.LoginLogic;
