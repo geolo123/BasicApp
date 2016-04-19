@@ -1,4 +1,4 @@
-package com.matto.view.activity;
+package com.matto.ui.activity;
 
 import android.content.Intent;
 import android.view.animation.Animation;

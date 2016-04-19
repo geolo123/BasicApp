@@ -1,4 +1,4 @@
-package com.matto.view.adapter;
+package com.matto.ui.adapter;
 
 import android.content.Context;
 

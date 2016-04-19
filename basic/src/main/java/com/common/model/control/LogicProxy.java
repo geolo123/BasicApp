@@ -56,7 +56,7 @@ public class LogicProxy {
 
     public <T> T getBindViewProxy(Class cls, Object o) {
         Object ret = m_objects.get(cls);
-        ((LogicControl) ret).attachView(o);
+        ((MvpLogic) ret).attachView(o);
         return (T) ret;
     }
 }

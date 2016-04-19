@@ -1,7 +1,8 @@
 package com.matto.model;
 
-import com.common.model.control.LogicControl;
+import com.common.model.control.MvpLogic;
 import com.common.model.annotation.Implement;
+import com.matto.ui.view.LoginView;
 
 
 /**
@@ -10,13 +11,7 @@ import com.common.model.annotation.Implement;
  */
 
 @Implement(LoginLogicImpl.class)
-public interface LoginLogic extends LogicControl<LoginLogic.LoginView> {
-
-    interface LoginView {
-        void onLoginSuccess();
-
-        void onLoginFail();
-    }
+public interface LoginLogic extends MvpLogic<LoginView> {
 
     void login(String name, String passwrod);
 }
